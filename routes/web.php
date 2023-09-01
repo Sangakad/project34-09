@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\TypeproductController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\PromotionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +32,21 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+//เมนูประเภทสินค้า
+Route::get('admin/typeproduct/index',[TypeproductController::class, 'index'])->name('t.index');
+Route::get('admin/typeproduct/create',[TypeproductController::class, 'create'])->name('t.create');
+Route::post('admin/typeproduct/insert',[TypeproductController::class, 'insert']);
+Route::get('admin/typeproduct/edit/{id}',[TypeproductController::class, 'edit']);
+Route::post('admin/typeproduct/update/{id}',[TypeproductController::class, 'update']);
+Route::get('admin/typeproduct/delete/{id}',[TypeproductController::class, 'delete']);
+
+
+//เมนูสินค้า
+Route::get('admin/product/index',[ProductController::class, 'index'])->name('p.index');
+Route::get('admin/product/create',[ProductController::class, 'create'])->name('p.create');
+
+
+//เมนูโปรโมชั่น
+Route::get('admin/promotion/index',[PromotionController::class, 'index'])->name('pro.index');
+Route::get('admin/promotion/create',[PromotionController::class, 'create'])->name('pro.create');
